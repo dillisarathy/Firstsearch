@@ -1,0 +1,117 @@
+.head1{
+    background-color: goldenrod;
+    height:100px;
+    color:deepskyblue;
+    font-size: 50px;
+}
+.head{
+    background-color:#3D6594;
+    height:50px;
+    font-size:25px;
+    color:whitesmoke;
+}
+.head a{
+    color:whitesmoke;
+    text-decoration: none;
+}
+.navbar-nav>li>a {
+    padding-top:0px;
+    padding-bottom: 0px;
+}
+.menu-bar{
+    background-color:#456B98;
+    height:30px;
+}
+.font-pad{
+    padding-top: 5px;
+}
+.menu-bar1{
+    background-color:deepskyblue;
+    height:50px;
+}
+.menu-item a{
+    color:whitesmoke;
+    font-size:15px;
+    height:30px;
+    width:200px;
+}
+.menu-item a:hover{
+    color:black;
+    background-color: teal;
+}
+.items
+{
+    padding-right:50px;
+    background-color: darkkhaki;
+    height:50px;
+    
+}
+.innerEle{
+    border-bottom-style: solid;
+    border-bottom-color: coral;
+    font-size:25px;
+   
+}
+.image{
+    margin-left:80px;
+}
+.innerCont{
+    font-size:20px;
+}
+.thecategory{
+    float:right;
+}
+.column{
+    background-color:black;
+    color:white;
+}
+.column a{
+    color: whitesmoke;
+}
+.centerAlign{
+    /* margin-left:auto; */
+    /* margin-right:auto; */
+    width:500px;
+    /* background:darkgreen; */
+    position:relative;
+    margin-top:30px;
+}
+.form-group.required .control-label:after {
+    content:"*";
+    color:red;
+  }
+.nav-tabs {
+    margin-bottom: 15px;
+}
+.sign-with {
+    margin-top: 25px;
+    padding: 20px;
+}
+div#OR {
+    height: 30px;
+    width: 30px;
+    border: 1px solid #C2C2C2;
+    border-radius: 50%;
+    font-weight: bold;
+    line-height: 28px;
+    text-align: center;
+    font-size: 12px;
+    float: right;
+    position: absolute;
+    right: -16px;
+    top: 40%;
+    z-index: 1;
+    background: #DFDFDF;
+}
+.font-color{
+    color:black;
+    size : 25px;
+    font-weight: bold;
+}
+.font-size{
+    font-size : 22px;
+    color:darkcyan;
+}
+.customfont { 
+    font-family: Georgia, serif;
+}
