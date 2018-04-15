@@ -9,7 +9,7 @@
         <script src="{{ url('/js/bootstrap.min.js') }}"></script>
         <script src="{{ url('/js/jquery-validation/dist/jquery.validate.min.js') }}"></script>
         <script src="{{ url('/js/jquery-validation/dist/additional-methods.min.js') }}"></script>
-        <link rel="stylesheet" href="{{ url('/css/font-awesome.min.css') }}">
+        <link rel="stylesheet" href="{{ url('/css/font-awesome-4.7.0/css/font-awesome.min.css') }}">
         <link rel="stylesheet" href="{{ url('/css/style.css') }}">
         <script type="text/javascript">
             

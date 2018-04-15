@@ -115,3 +115,18 @@ div#OR {
 .customfont { 
     font-family: Georgia, serif;
 }
+.footer {
+    background-color: rgb(4, 52, 107);
+    position: fixed;
+    bottom: 0px;
+    /* left: 0px; */
+    /* right: 0px; */
+    height: 50px;
+    margin-bottom: 0px;
+}
+.fa{
+    color:#DFDFDF;
+}
+.powered{
+    color:whitesmoke;
+}
