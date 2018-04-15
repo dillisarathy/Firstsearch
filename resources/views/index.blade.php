@@ -39,6 +39,7 @@
             </center>
         </div>
         </div>
+        @include('footer')
     </div>
 </div>
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
@@ -213,7 +214,7 @@
                 </div>
             </div>
         </div>
-
-
+    </div>
+</div>
 </body>
 </html>

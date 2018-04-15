@@ -8,7 +8,6 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
-//use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Auth;
 use App\Jobdetail;
@@ -26,17 +25,12 @@ class Controller extends BaseController
 
     public function homePage()
     {
-       // $jobDetails = Jobdetail :: all();
         $degreeDetails = Educationdetail :: all();
 
         $jobDetails = DB::table('jobdetails')
             ->join('categories', 'categories.cat_id', '=', 'jobdetails.cat_id')
             ->select('jobdetails.*', 'categories.category')
-            ->orderBy('created_at','desc')->paginate(2);
-            //->get();
-        // return $jobDetails;
-        // return view('index',array('jobDetails' => $tagDetail));
-        // $user = Modal name::paginate(2);
+            ->orderBy('created_at','desc')->paginate(15);
         return view('index',array("jobDetails"=>$jobDetails,"degreeDetails"=>$degreeDetails));
     }
 
@@ -61,13 +55,9 @@ class Controller extends BaseController
         $jobDetails = DB::table('jobdetails')
             ->join('categories', 'categories.cat_id', '=', 'jobdetails.cat_id')
             ->select('jobdetails.*', 'categories.category')
-            ->where('categories.cat_id','=',$condition)->paginate(2);
-            //->get();
+            ->where('categories.cat_id','=',$condition)->paginate(15);
 
         $degreeDetails = Educationdetail :: all();
-        // return $jobDetails;
-        // return view('index',array('jobDetails' => $tagDetail));
-        // $user = Modal name::paginate(2);
         return view('index',array("jobDetails"=>$jobDetails,"degreeDetails"=>$degreeDetails));
     }
 
@@ -82,7 +72,6 @@ class Controller extends BaseController
             ->select('jobdetails.*')
             ->where('jobdetails.job_id', '=', $id)
             ->get();
-        // return $jobDetails;
         return view('jobDescription',array("jobDetail"=>$jobDetails));
     }
 
@@ -152,7 +141,7 @@ class Controller extends BaseController
     public function adminJobInsertion(Request $request)
     {
         $sessionCheck = $request->session()->get('userId');
-        if(!$sessionCheck || !in_array($sessionCheck,array(11)))
+        if(!$sessionCheck || !in_array($sessionCheck,array(17,2)))
             return redirect('/');
         $categoryDetails = Category :: all();
         return view('jobForm',array("categoryDetails"=>$categoryDetails));
@@ -160,6 +149,27 @@ class Controller extends BaseController
 
     public function adminJobSave(Request $request)
     {
+        $validator = Validator::make($request->all(),[
+            'job_role' => 'required|regex:/^[a-zA-Z ]+$/u',
+            'email_address' => 'nullable|email',
+            'job_description' => 'required',
+            'experience' => 'required',
+            'qualification' => 'required',
+            'key_skills' => 'required',
+            'company_name' => 'required',
+            'company_profile' => 'required',
+            'address' => 'required',
+            'interview_dates' => 'required',
+            'contact_number' => 'nullable',
+            'location' => 'required',
+            'cat_id' => 'required'
+        ]);
+        if($validator->fails())
+        {
+            return redirect('/admin/form')
+                    ->withErrors($validator,"jobError")
+                    ->withInput();
+        }
         $input = $request->all();
         $user = Jobdetail::create($request->all());
         return redirect('admin/form');
@@ -168,7 +178,7 @@ class Controller extends BaseController
     public function adminLogin(Request $request)
     {
         $sessionCheck = $request->session()->get('userId');
-        if(isset($sessionCheck) && in_array($sessionCheck,array(11)))
+        if(isset($sessionCheck) && in_array($sessionCheck,array(17,2)))
             return redirect('admin/form');
         return redirect('/');
     }
