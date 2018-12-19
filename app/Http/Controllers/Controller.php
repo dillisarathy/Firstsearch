@@ -49,9 +49,10 @@ class Controller extends BaseController
             $condition = '3';
         else if($category == 'account')
             $condition = '14,11';
-        else 
+        else if($category == 'civil')
             $condition = '13,12';
-        
+        if($condition == "")
+            return redirect('/');
         $jobDetails = DB::table('jobdetails')
             ->join('categories', 'categories.cat_id', '=', 'jobdetails.cat_id')
             ->select('jobdetails.*', 'categories.category')
